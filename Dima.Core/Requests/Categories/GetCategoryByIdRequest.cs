@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dima.Core.Requests
+namespace Dima.Core.Requests.Categories
 {
-    public abstract class Request
+    public class GetCategoryByIdRequest : Request
     {
-        public string UserId { get; set; } = string.Empty;
+        public long Id { get; set; }
     }
 }
