@@ -1,5 +1,6 @@
 C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\appsettings.json
+C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Dima.api.staticwebassets.endpoints.json
 C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Dima.api.exe
 C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Dima.api.deps.json
 C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Dima.api.runtimeconfig.json
@@ -10,6 +11,9 @@ C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Azure.Identity.dll
 C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\EntityFramework.SqlServer.dll
 C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\EntityFramework.dll
 C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Humanizer.dll
+C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Microsoft.Build.Locator.dll
@@ -32,6 +36,8 @@ C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Microsoft.Extensio
 C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
 C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\leonardo\source\repos\Dima\Dima.api\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
@@ -178,14 +184,17 @@ C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\Dima.api.csproj.Co
 C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\Dima.api.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\Dima.api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\Dima.api.sourcelink.json
+C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\scopedcss\bundle\Dima.api.styles.css
 C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\staticwebassets\msbuild.Dima.api.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\staticwebassets\msbuild.Dima.api.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\staticwebassets\msbuild.build.Dima.api.props
 C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Dima.api.props
 C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Dima.api.props
 C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\scopedcss\bundle\Dima.api.styles.css
+C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\Dima.api.csproj.Up2Date
 C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\Dima.api.dll
 C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\refint\Dima.api.dll

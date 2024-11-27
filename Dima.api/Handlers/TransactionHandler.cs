@@ -1,4 +1,5 @@
 ﻿using Dima.api.Data;
+using Dima.Core.Common.Extencions;
 using Dima.Core.Configurations;
 using Dima.Core.Handlers;
 using Dima.Core.Models;
@@ -20,7 +21,8 @@ namespace Dima.api.Handlers
                     UserId = request.UserId,
                     Title = request.Title,
                     Type = request.Type,
-                    PaidOrReceivedAt = DateTime.UtcNow,
+                    PaidOrReceivedAt = request.PaidOrReceivedAt,
+                    CreatedAt = DateTime.UtcNow,
                     Amount = request.Amount,
                     CategoryId = request.CategoryId
                 };
@@ -40,9 +42,9 @@ namespace Dima.api.Handlers
             try
             {
                 var transaction = await context.Transactions.FirstOrDefaultAsync(x => x.Id == request.Id && x.UserId == request.UserId);
-                
 
-                if(transaction is null)
+
+                if (transaction is null)
                     return new Response<Transaction?>(null, 404, "Transação não encontrada");
 
                 context.Transactions.Remove(transaction);
@@ -57,22 +59,37 @@ namespace Dima.api.Handlers
             }
         }
 
-        public async Task <PagedResponse<List<Transaction?>>> GetAllAsync(GetAllTransactionsRequest request)
+        public async Task<PagedResponse<List<Transaction>?>> GetByPeriodAsync(GetTransactionsByPeriodRequest request)
         {
             try
             {
-                var query = context.Transactions.AsNoTracking().Where(x => x.UserId == request.UserId).OrderBy(x => x.Title);
-                var result = await query.Skip((request.PageNumber - 1) * request.PageSize).Take(request.PageSize).ToListAsync();
-                var count = await query.CountAsync();
-
-                
-                return new PagedResponse<List<Transaction?>>(result, count, request.PageNumber, request.PageSize);
+                request.StartDate ??= DateTime.Now.GetFirstDay();
+                request.EndDate ??= DateTime.Now.GetLastDay();
             }
-
-
             catch
             {
-                return new PagedResponse<List<Transaction?>>(null, 500, "Não foi possivel consultar as transações");
+                return new PagedResponse<List<Transaction>?>(null, 500, "Não foi possivel determinar a data de inicio ou término");
+            }
+
+            try
+            {
+                var query = context.Transactions
+             .AsNoTracking()
+             .Where(x =>
+             x.CreatedAt >= request.StartDate &&
+             x.CreatedAt <= request.EndDate &&
+             x.UserId == request.UserId)
+             .OrderBy(x => x.CreatedAt);
+
+                var transaction = await query.Skip((request.PageNumber - 1) * request.PageSize)
+                    .Take(request.PageSize).ToListAsync();
+
+                var count = await query.CountAsync();
+                return new PagedResponse<List<Transaction>?>(transaction, count, request.PageNumber, request.PageSize);
+            }
+            catch
+            {
+                return new PagedResponse<List<Transaction>?>(null, 500, "Não foi possivel obter as transações");
             }
 
 
@@ -97,24 +114,22 @@ namespace Dima.api.Handlers
         {
             try
             {
-                var result = await context.Transactions.FirstOrDefaultAsync(x => x.Id == request.Id && x.UserId == request.UserId);
+                var transaction = await context.Transactions.FirstOrDefaultAsync(x => x.Id == request.Id && x.UserId == request.UserId);
 
-                if (result is null) return new Response<Transaction?>(null, 404, "transação não encontrada");
+                if (transaction is null) return new Response<Transaction?>(null, 404, "transação não encontrada");
 
-                var update = new Transaction
-                {
 
-                    Title = request.Title,
-                    Type = request.Type,
-                    PaidOrReceivedAt = DateTime.UtcNow,
-                    Amount = request.Amount,
-                    CategoryId = request.CategoryId
-                };
+                transaction.Title = request.Title;
+                transaction.Type = request.Type;
+                transaction.PaidOrReceivedAt = request.PaidOrReceivedAt;
+                transaction.Amount = request.Amount;
+                transaction.CategoryId = request.CategoryId;
 
-                context.Transactions.Update(update);
+
+                context.Transactions.Update(transaction);
                 await context.SaveChangesAsync();
 
-                return new Response<Transaction?>(update, message: "Transação atualizada com sucesso");
+                return new Response<Transaction?>(transaction, message: "Transação atualizada com sucesso");
 
             }
 

@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Dima.Core.Common.Extencions
 {
-    internal class DateTimeExtencion
+    public static class DateTimeExtencion
     {
+        public static DateTime GetFirstDay(this DateTime date, int? year = null, int? month = null) 
+            => new DateTime(year ?? date.Year, month ?? date.Month, 1); // Pegar o primeiro dia do mês
+
+        public static DateTime GetLastDay(this DateTime date, int? year = null, int? month = null)
+        => new DateTime(year ?? date.Year, month ?? date.Month, 1).AddMonths(1).AddDays(-1); // Pegar o ultimo dia do mês
     }
 }
+

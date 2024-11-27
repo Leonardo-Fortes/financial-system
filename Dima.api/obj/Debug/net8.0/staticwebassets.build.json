@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "M98iqZlIhErLPzBToSurCTUhVU3raztav3Tfxw9Q2Xc=",
+  "Hash": "8gTB8xqGTzQSl334r53O4c7a+EILoE1C8Vd9Jcsuh3Q=",
   "Source": "Dima.api",
   "BasePath": "_content/Dima.api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

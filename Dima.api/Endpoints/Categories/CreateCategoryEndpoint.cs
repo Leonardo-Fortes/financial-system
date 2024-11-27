@@ -3,6 +3,7 @@ using Dima.Core.Handlers;
 using Dima.Core.Models;
 using Dima.Core.Requests.Categories;
 using Dima.Core.Responses;
+using System.Security.Claims;
 
 namespace Dima.api.Endpoints.Categories
 {
@@ -15,9 +16,9 @@ namespace Dima.api.Endpoints.Categories
             .WithDescription("Cria uma nova categoria")
             .WithOrder(1).Produces<Response<Category?>>();
 
-        private static async Task<IResult> HandleAsync(CreateCategoryRequest request,ICategoryHandler handler)
+        private static async Task<IResult> HandleAsync(CreateCategoryRequest request,ClaimsPrincipal user ,ICategoryHandler handler)
         {
-            request.UserId = "leonardo@teste";
+            request.UserId = user.Identity?.Name ?? string.Empty;
             var result = await handler.CreateAsync(request);
             
             return result.IsSuccess

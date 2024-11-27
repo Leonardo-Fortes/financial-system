@@ -1,8 +1,10 @@
 ﻿using Dima.api.Common.Api;
+using Dima.api.Models;
 using Dima.Core.Handlers;
 using Dima.Core.Models;
 using Dima.Core.Requests.Categories;
 using Dima.Core.Responses;
+using System.Security.Claims;
 
 namespace Dima.api.Endpoints.Categories
 {
@@ -16,11 +18,11 @@ namespace Dima.api.Endpoints.Categories
             .WithOrder(3)
             .Produces<Response<Category>>();
 
-        private static async Task<IResult> HandlerAsync(ICategoryHandler handler, long id)
+        private static async Task<IResult> HandlerAsync(ICategoryHandler handler, ClaimsPrincipal user, long id)
         {
             var request = new DeleteCategoryRequest
             {
-                UserId = "leonardo@teste",
+                UserId =  user.Identity?.Name ?? string.Empty,
                 Id = id
             };
 
