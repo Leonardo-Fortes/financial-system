@@ -1,8 +1,10 @@
 ﻿using Dima.api.Common.Api;
 using Dima.api.Endpoints.Categories;
 using Dima.api.Endpoints.Identity;
+using Dima.api.Endpoints.Reports;
 using Dima.api.Endpoints.Transactions;
 using Dima.api.Models;
+using Dima.Api.Endpoints.Reports;
 
 
 namespace Dima.api.Endpoints
@@ -35,12 +37,21 @@ namespace Dima.api.Endpoints
             .MapEndpoint<GetTransactionByIdEndpoint>()
             .MapEndpoint<GetTransactionByPeriodEndpoint>();
 
-            endpoints.MapGroup("v1/identity").WithTags("identity")
+            endpoints.MapGroup("v1/identity")
+            .WithTags("identity")
             .MapIdentityApi<User>();
 
             endpoints.MapGroup("v1/identity").WithTags("identity")
             .MapEndpoint<LogoutEndpoint>()
             .MapEndpoint<GetRolesEndpoint>();
+
+            endpoints.MapGroup("v1/reports")
+                .WithTags("reports")
+                .RequireAuthorization()
+                .MapEndpoint<GetExpensesByCategoryEndpoint>()
+                .MapEndpoint<GetIncomesByCategoryEndpoint>()
+                .MapEndpoint<GetIncomesAndExpensesEndpoint>()
+                .MapEndpoint<GetFinancialSummaryEndpoint>();
 
         }
 

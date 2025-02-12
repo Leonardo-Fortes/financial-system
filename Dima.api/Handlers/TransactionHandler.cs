@@ -1,6 +1,7 @@
 ﻿using Dima.api.Data;
 using Dima.Core.Common.Extencions;
 using Dima.Core.Configurations;
+using Dima.Core.Enums;
 using Dima.Core.Handlers;
 using Dima.Core.Models;
 using Dima.Core.Requests.Transactions;
@@ -14,6 +15,9 @@ namespace Dima.api.Handlers
     {
         public async Task<Response<Transaction?>> CreateAsync(CreateTransactionRequest request)
         {
+            if(request is { Type: ETransactionType.Withdraw, Amount: >= 0})
+                request.Amount *= -1;
+            
             try
             {
                 var transaction = new Transaction
@@ -76,10 +80,10 @@ namespace Dima.api.Handlers
                 var query = context.Transactions
              .AsNoTracking()
              .Where(x =>
-             x.CreatedAt >= request.StartDate &&
-             x.CreatedAt <= request.EndDate &&
+             x.PaidOrReceivedAt >= request.StartDate &&
+             x.PaidOrReceivedAt <= request.EndDate &&
              x.UserId == request.UserId)
-             .OrderBy(x => x.CreatedAt);
+             .OrderBy(x => x.PaidOrReceivedAt);
 
                 var transaction = await query.Skip((request.PageNumber - 1) * request.PageSize)
                     .Take(request.PageSize).ToListAsync();
@@ -112,6 +116,8 @@ namespace Dima.api.Handlers
 
         public async Task<Response<Transaction?>> UpdateAsync(UpdateTransactionRequest request)
         {
+            if (request is { Type: ETransactionType.Withdraw, Amount: >= 0 })
+                request.Amount *= -1;
             try
             {
                 var transaction = await context.Transactions.FirstOrDefaultAsync(x => x.Id == request.Id && x.UserId == request.UserId);

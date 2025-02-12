@@ -1,0 +1,71 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider
+@ref="_mudThemeProvider"
+@bind-IsDarkMode="_isDarkMode" 
+Theme="Configuration.Theme" />
+<MudSnackbarProvider />
+<MudDialogProvider/>
+<MudPopoverProvider />
+
+<AuthorizeView>
+    <Authorized>
+        <MudLayout>
+            <MudAppBar>
+                <MudIconButton Icon="@Icons.Material.Filled.Menu" 
+                Color="Color.Inherit" 
+                Edge="Edge.Start" 
+                OnClick="ToggerDrawer"/>
+                Dima
+                <MudSpacer />
+                <MudButton Href="/lancamentos/novo"Variant="Variant.Text" StartIcon="@Icons.Material.TwoTone.Add">Novo Lançamento</MudButton>
+                <MudSpacer />
+                <MudText>
+                    @context.User.Identity?.Name
+                </MudText>
+                <MudSwitch @bind-Value="@_isDarkMode" Color="Color.Inherit"
+                Class="ma-4"
+                T="bool"
+                ThumbIcon="@Icons.Material.TwoTone.Lightbulb"/>
+            </MudAppBar>
+            <MudDrawer @bind-Open="@_isDrawerOpened">
+                <NavMenu/>
+            </MudDrawer>
+            <MudMainContent>
+                <MudContainer Class="mt-4">
+                    @Body
+                </MudContainer>
+            </MudMainContent>
+        </MudLayout>
+    </Authorized>
+    <NotAuthorized>
+        <LoginRedirect />
+    </NotAuthorized>
+</AuthorizeView>
+
+@code{
+    private bool _isDrawerOpened = true;
+
+    // Código para atualizar o tema lightMode e DarkMode pegando a preferencia de sistema do usuário
+    private bool _isDarkMode = true;
+    private MudThemeProvider _mudThemeProvider = null!;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+        {
+            _isDarkMode = await _mudThemeProvider.GetSystemPreference();
+            await _mudThemeProvider.WatchSystemPreference(OnSystemPreferenceChanged);
+            StateHasChanged();
+        }
+    }
+
+    private Task OnSystemPreferenceChanged(bool newValue)
+    {
+        _isDarkMode = newValue;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    private void ToggerDrawer() => _isDrawerOpened = !_isDrawerOpened;
+}

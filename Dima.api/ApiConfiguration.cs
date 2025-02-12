@@ -1,6 +1,7 @@
 ﻿namespace Dima.api
 {
-    public class ApiConfiguration
+    public static class ApiConfiguration
     {
+        public const string CorsPolicyName = "wasm";
     }
 }

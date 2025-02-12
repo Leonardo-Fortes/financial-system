@@ -194,7 +194,6 @@ C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\staticwebassets\ms
 C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Dima.api.props
 C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Dima.api.props
 C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\Dima.api.csproj.Up2Date
 C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\Dima.api.dll
 C:\Users\leonardo\source\repos\Dima\Dima.api\obj\Debug\net8.0\refint\Dima.api.dll
